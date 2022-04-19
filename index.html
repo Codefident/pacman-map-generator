@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pacman</title>
+    <script src="js/Generators.js"></script>
+    <script src="js/Drawing.js"></script>
+    <script src="js/Select.js"></script>
+    <script src="js/Menu.js"></script>
+    <script src="js/KeyEvents.js"></script>
+    <script src="js/Main.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            width: 1903px;
+            padding: 20px;
+            height: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            background-color: black;
+            overflow: scroll;
+        }
+
+        .sheetElement,
+        .mapElement {
+            float: left;
+            margin: 0;
+            border: 1px dotted gray;
+            margin: 1px;
+        }
+
+        .sheetElement {
+            opacity: 0.5;
+        }
+
+        .sheetElement:nth-child(16n+1) {
+            clear: left;
+        }
+
+        .mapElement:nth-child(44n+1) {
+            clear: left;
+        }
+
+        #upSCr,
+        #upMap {
+            color: white;
+            position: absolute;
+        }
+
+        #upMap {
+            left: 520px;
+        }
+
+        #sheetContainer,
+        #mapContainer {
+            display: inline-block;
+            position: absolute;
+            width: 1364px;
+            height: 1364px;
+            top: 50px;
+        }
+
+        #mapContainer {
+            left: 520px;
+        }
+
+        #menu {
+            width: 200px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+
+            background-color: darkblue;
+            color: white;
+        }
+
+        #menu div {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+
+        #menu div:hover {
+            background-color: blue;
+        }
+
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="upSCr">Items</div>
+    <div id="upMap">Map (automatic select: <input id="auto" class="pointer" type="checkbox">)</div>
+    <div id="sheetContainer"></div>
+    <div id="mapContainer"></div>
+    <div id="menu" hidden>
+        <!-- <div><strong>Undo</strong> - Ctrl+Z</div>
+        <div><strong>Redo</strong> - Ctrl+Y</div> -->
+        <div id="cut"><strong>Cut</strong> - Ctrl+X</div>
+        <div id="copy"><strong>Copy</strong> - Ctrl+C</div>
+        <div id="paste"><strong>Paste</strong> - Ctrl+V</div>
+        <div id="delete"><strong>Delete</strong> - Del</div>
+        <!-- <div><strong>Save to file</strong> - Ctrl+S</div>
+        <div><strong>Load from file</strong> - Ctrl+L</div> -->
+        <div id="exitMenu"><strong>Exit menu</strong> - Esc</div>
+    </div>
+</body>
+
+</html>

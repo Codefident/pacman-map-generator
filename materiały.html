@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .location {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            border: solid 1px;
+            float: left;
+        }
+
+        .location:nth-child(2n) {
+            clear: both;
+        }
+    </style>
+    <script>
+        class Location {
+            constructor(who, height) {
+                this.who = who;
+                this.height = height;
+                this.element = null;
+                this.init();
+            }
+            init() {
+                var div = document.createElement("div");
+                div.classList.add("location");
+                /*var that=this;
+                div.onclick=function(e){
+                    console.log(that,e.target);
+                    alert(that.who+" "+that.height)
+                }*/
+                /*
+                div.onclick=function(e){
+                    console.log(this,e.target);
+                    alert(this.who+" "+this.height)
+                }.bind(this)*/
+                div.onclick = (e) => {
+                    console.log(this, e.target);
+
+                    alert(this.who + " " + this.height)
+                    e.target.style.backgroundColor = "red"
+                }
+
+                document.body.appendChild(div);
+                this.element = div;
+                console.log("el ", this.element)
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            game = {
+                board: [
+                    [new Location("brunette", 176), new Location("brown hair", 148)],
+                    [new Location("redhead", 186), new Location("blonde", 162)]
+                ],
+                player: {
+                    pos_x: 0,
+                    pos_y: 0,
+                    report: function (p) {
+                        console.log(p, p.who, p.height);
+                    },
+                    go: function (direction) {
+                        if (direction == 'up') this.pos_y--;
+                        else if (direction == 'left') this.pos_x--;
+                        else if (direction == 'right') this.pos_x++;
+                        else if (direction == 'down') this.pos_y++;
+                        this.highlight();
+                    },
+                    highlight: function () {
+                        var person = game.board[this.pos_y][this.pos_x]
+                        for (var i = 0; i < game.board.length; i++)
+                            for (var j = 0; j < game.board[i].length; j++)
+                                game.board[j][i].element.style.backgroundColor = "white";
+                        person.element.style.backgroundColor = "pink";
+                        this.report(person);
+                    }
+                }
+            }
+            game.player.highlight();
+
+            var f = function (ii) {
+                return function () {
+                    alert(ii);
+                }
+            }
+
+            for (let i = 0; i <= 4; i++) { // var a let
+                var el = document.createElement("button");
+                el.innerText = "X";
+                el.onclick = function () {
+                    alert(i);
+                }
+
+                //el.onclick=f(i);
+                document.body.appendChild(el);
+            }
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <button onclick="game.player.go('left')">LEFT</button>
+    <button onclick="game.player.go('up')">UP</button>
+    <button onclick="game.player.go('down')">DOWN</button>
+    <button onclick="game.player.go('right')">RIGHT</button> <br />
+</body>
+
+</html>
