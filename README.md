@@ -1,3 +1,8 @@
 # pacman-map-generator 👾
 
-Gra stworzona w ramach projektu szkolnego. 🏫
+This was a school project 🏫
+
+## Used technology
+- HTML
+- CSS
+- JavaScript
