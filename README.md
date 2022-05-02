@@ -6,3 +6,4 @@ This was a school project 🏫
 - HTML
 - CSS
 - JavaScript
+
