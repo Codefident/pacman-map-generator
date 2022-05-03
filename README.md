@@ -2,7 +2,7 @@
 
 This was a school project 🏫
 
-## Used technology
+## Technology used
 - HTML
 - CSS
 - JavaScript
